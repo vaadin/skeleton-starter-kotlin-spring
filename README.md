@@ -5,6 +5,8 @@ It contains all the necessary configuration and some placeholder files to get yo
 
 The best way to create your own project based on this starter is [start.vaadin.com](https://start.vaadin.com/) - you can get only the necessary parts and choose the package naming you want to use.
 
+Uses [Karibu-DSL](https://github.com/mvysny/karibu-dsl).
+
 ## Running the Application
 There are two ways to run the application :  using `mvn spring-boot:run` or by running the `Application` class directly from your IDE.
 
