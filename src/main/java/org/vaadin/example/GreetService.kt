@@ -5,9 +5,8 @@ import java.io.Serializable
 
 @Service
 open class GreetService : Serializable {
-    fun greet(name: String?): String = if (name.isNullOrEmpty()) {
-        "Hello anonymous user"
-    } else {
-        "Hello $name"
+    fun greet(name: String?): String = when {
+        !name.isNullOrEmpty() -> "Hello $name"
+        else -> "Hello anonymous user"
     }
 }
