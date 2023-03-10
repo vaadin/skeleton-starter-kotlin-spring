@@ -48,7 +48,7 @@ class MainView(@Autowired service: GreetService) : KComposite() {
                 addClickShortcut(Key.ENTER)
 
                 onLeftClick {
-                    Notification.show(service.greet(nameField.value))
+                    this@verticalLayout.p(service.greet(nameField.value))
                 }
             }
         }
