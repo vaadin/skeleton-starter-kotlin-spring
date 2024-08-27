@@ -1,14 +1,13 @@
 package org.vaadin.example;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.Keys;
-
 import com.vaadin.flow.component.button.testbench.ButtonElement;
-import com.vaadin.flow.component.notification.testbench.NotificationElement;
+import com.vaadin.flow.component.html.testbench.ParagraphElement;
 import com.vaadin.flow.component.textfield.testbench.TextFieldElement;
 import com.vaadin.testbench.BrowserTest;
 import com.vaadin.testbench.BrowserTestBase;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.Keys;
 
 public class MainViewIT extends BrowserTestBase {
 
@@ -32,26 +31,26 @@ public class MainViewIT extends BrowserTestBase {
 
     @BrowserTest
     public void clickingButtonShowsNotification() {
-        Assertions.assertFalse($(NotificationElement.class).exists());
+        Assertions.assertFalse($(ParagraphElement.class).exists());
         $(ButtonElement.class).waitForFirst().click();
-        Assertions.assertTrue($(NotificationElement.class).waitForFirst().isOpen());
+        Assertions.assertTrue($(ParagraphElement.class).waitForFirst().isDisplayed());
     }
 
     @BrowserTest
     public void clickingButtonTwiceShowsTwoNotifications() {
-        Assertions.assertFalse($(NotificationElement.class).exists());
+        Assertions.assertFalse($(ParagraphElement.class).exists());
         ButtonElement button = $(ButtonElement.class).waitForFirst();
         button.click();
         button.click();
-        $(NotificationElement.class).waitForFirst();
-        Assertions.assertEquals(2, $(NotificationElement.class).all().size());
+        $(ParagraphElement.class).waitForFirst();
+        Assertions.assertEquals(2, $(ParagraphElement.class).all().size());
     }
 
     @BrowserTest
     public void testClickButtonShowsHelloAnonymousUserNotificationWhenUserNameIsEmpty() {
         ButtonElement button = $(ButtonElement.class).waitForFirst();
         button.click();
-        NotificationElement notification = $(NotificationElement.class).waitForFirst();
+        ParagraphElement notification = $(ParagraphElement.class).waitForFirst();
         Assertions.assertEquals("Hello anonymous user", notification.getText());
     }
 
@@ -60,7 +59,7 @@ public class MainViewIT extends BrowserTestBase {
         TextFieldElement textField = $(TextFieldElement.class).waitForFirst();
         textField.setValue("Vaadiner");
         $(ButtonElement.class).waitForFirst().click();
-        NotificationElement notification = $(NotificationElement.class).waitForFirst();
+        ParagraphElement notification = $(ParagraphElement.class).waitForFirst();
         Assertions.assertEquals("Hello Vaadiner", notification.getText());
     }
 
@@ -69,7 +68,7 @@ public class MainViewIT extends BrowserTestBase {
         TextFieldElement textField = $(TextFieldElement.class).waitForFirst();
         textField.setValue("Vaadiner");
         textField.sendKeys(Keys.ENTER);
-        NotificationElement notification = $(NotificationElement.class).waitForFirst();
+        ParagraphElement notification = $(ParagraphElement.class).waitForFirst();
         Assertions.assertEquals("Hello Vaadiner", notification.getText());
     }
 }
