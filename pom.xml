@@ -88,7 +88,7 @@
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-dev</artifactId>
-            <scope>compile</scope>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
