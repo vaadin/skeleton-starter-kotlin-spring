@@ -18,12 +18,15 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: ${{ matrix.java }}
+    
     - name: Cache Maven packages
       uses: actions/cache@v4
       with:
-        path: |
-          ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml', '.mvn/wrapper/maven-wrapper.properties') }}
-    - name: Build with Maven
-      run: ./mvnw -C -B -e -V clean install -Pproduction
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-v2-${{ hashFiles('**/pom.xml') }}
 
+    - name: Clean problematic deps
+      run: rm -rf ~/.m2/repository/com/vaadin
+      
+    - name: Build with Maven
+      run: ./mvnw -B -e -V clean install -Pproduction -U
