@@ -11,8 +11,8 @@
 
     <properties>
         <java.version>21</java.version>
-        <vaadin.version>25.2.1</vaadin.version>
-        <kotlin.version>2.2.0</kotlin.version>
+        <vaadin.version>25.2.2</vaadin.version>
+        <kotlin.version>2.4.0</kotlin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
