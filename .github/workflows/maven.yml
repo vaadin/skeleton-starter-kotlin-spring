@@ -18,6 +18,12 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: ${{ matrix.java }}
+    - name: Set TB License
+      env:
+        VAADIN_PRO_KEY: ${{ secrets.VAADIN_PRO_KEY }}
+      run: |
+        mkdir -p ~/.vaadin/
+        echo '{"username":"'`echo $VAADIN_PRO_KEY | cut -d / -f1`'","proKey":"'`echo $VAADIN_PRO_KEY | cut -d / -f2`'"}' > ~/.vaadin/proKey
     
     - name: Cache Maven packages
       uses: actions/cache@v4
